@@ -55,10 +55,10 @@ export const Default: Story = {
     await expect(input).toHaveValue("10");
 
     const incrementButton = canvas.getByRole("button", { name: "▴" });
-    expect(incrementButton).toBeInTheDocument();
+    await expect(incrementButton).toBeInTheDocument();
 
     const decrementButton = canvas.getByRole("button", { name: "▾" });
-    expect(decrementButton).toBeInTheDocument();
+    await expect(decrementButton).toBeInTheDocument();
 
     await userEvent.click(incrementButton);
     await new Promise((resolve) => setTimeout(resolve, 1000));

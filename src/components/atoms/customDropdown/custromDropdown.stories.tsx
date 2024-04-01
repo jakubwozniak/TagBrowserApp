@@ -72,7 +72,7 @@ export const Default: Story = {
           isNoneOptionPresent = true;
         }
       });
-      expect(isNoneOptionPresent).toBeTruthy();
+      await expect(isNoneOptionPresent).toBeTruthy();
     }
   },
   args: {
@@ -121,9 +121,9 @@ export const WithValue: Story = {
           }
         }
       });
-      expect(isNoneOptionPresent).toBeTruthy();
-      expect(is1OptionPresent).toBeTruthy();
-      expect(is2OptionPresent).toBeTruthy();
+      await expect(isNoneOptionPresent).toBeTruthy();
+      await expect(is1OptionPresent).toBeTruthy();
+      await expect(is2OptionPresent).toBeTruthy();
     }
   },
   args: {
