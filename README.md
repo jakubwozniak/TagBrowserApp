@@ -47,7 +47,7 @@ To get started with the TagBrowserApp, follow these steps:
 1. Install dependencies by running:
 
 ```
-npm start
+npm ci
 ```
 
 2. Once dependencies are installed, you can start the app or Storybook using the following commands:
