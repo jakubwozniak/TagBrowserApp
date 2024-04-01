@@ -1,46 +1,65 @@
-# Getting Started with Create React App
+# TagBrowserApp
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+TagBrowserApp is a project developed as part of a recruitment process to demonstrate skills in web development. The application allows users to browse and filter tags retrieved from the Stack Exchange API and provides authentication using OAuth 2.0.
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
+- Browse and filter tags fetched from the Stack Exchange API.
+- User authentication using OAuth 2.0.
+- Utilizes Redux, Redux Toolkit, and RTK Query for state management and API interactions.
+- Components are documented using Storybook.
+- Tests are written using Storybook's built-in testing tool `@storybook/test` for each Story.
 
-### `npm start`
+## State Management
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- **Redux**: Redux is utilized for managing the application state.
+- **Redux Toolkit**: Redux Toolkit is used to simplify Redux setup and configuration.
+- **RTK Query**: RTK Query is employed for making API calls and managing cache with Redux.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Documentation
 
-### `npm test`
+Components in the project are documented using Storybook, providing an easy-to-use interface to browse and understand each component's usage and properties.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Tests
 
-### `npm run build`
+Tests are written using Storybook's built-in testing tool `@storybook/test` for each Story. This tool provides a convenient way to write and run tests directly within Storybook, ensuring that each component behaves as expected in isolation. For example:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```javascript
+ListItemsTest.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement);
+  await Promise.all(
+    items.map(async (item) => {
+      const nameText = canvas.getByText(item.name);
+      await expect(nameText).toBeInTheDocument();
+      const countText = canvas.getByText(item.count);
+      await expect(countText).toBeInTheDocument();
+    })
+  );
+};
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+These tests ensure the reliability and stability of the codebase, covering both individual components and integration scenarios.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Getting Started
 
-### `npm run eject`
+To get started with the TagBrowserApp, follow these steps:
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+1. Install dependencies by running:
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```
+npm start
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+2. Once dependencies are installed, you can start the app or Storybook using the following commands:
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+- To start the app, run:
 
-## Learn More
+  ```
+  npm start
+  ```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- To start Storybook, run:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+  ```
+  npm run storybook
+  ```
