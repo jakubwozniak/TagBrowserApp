@@ -1,11 +1,7 @@
 export const containerStyles = {
-  display: {
-    lg: "block",
-    xs: "flex",
-  },
-  width: {
-    lg: "100%",
-  },
+  display: "flex",
+  flexDirection: "column",
+  width: "100%",
 };
 export const listItemButtonStyles = {
   "&.Mui-selected": {

@@ -15,7 +15,12 @@ const meta: Meta<typeof CustomOAuth2> = {
     (Story) => (
       <Provider store={store}>
         <ThemeManager>
-          <Layout height="inherit">
+          <Layout
+            sx={{
+              p: "20px",
+              height: "inherit",
+            }}
+          >
             <ToggleTheme center />
             <Story />
           </Layout>

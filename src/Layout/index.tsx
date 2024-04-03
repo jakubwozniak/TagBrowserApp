@@ -1,23 +1,32 @@
-import { Box } from "@mui/material";
+import { Box, SxProps, Theme } from "@mui/material";
 import { ReactNode } from "react";
-import Sidebar from "../components/templates/sidebar";
 import { containerStyles } from "./styles";
+import ResponsiveDrawer from "../components/templates/responsiveDrawer";
 
 interface LayoutProps {
   children: ReactNode;
   displaySidebar?: boolean;
   height?: string;
+  sx?: SxProps<Theme>;
 }
 
-const Layout = ({ children, displaySidebar, height }: LayoutProps) => {
+const Layout = ({ children, displaySidebar, sx }: LayoutProps) => {
   return (
     <Box
-      sx={{ ...containerStyles, ...(height != null ? { height: height } : {}) }}
+      sx={{
+        ...containerStyles,
+        ...sx,
+      }}
     >
-      {displaySidebar && <Sidebar />}
-      <Box sx={{ width: "100%", overflowY: "auto", pr: { lg: "24px" } }}>
-        {children}
-      </Box>
+      {displaySidebar === true ? (
+        <ResponsiveDrawer>
+          <Box sx={{ width: "100%", overflowY: "auto", pr: { lg: "24px" } }}>
+            {children}
+          </Box>
+        </ResponsiveDrawer>
+      ) : (
+        children
+      )}
     </Box>
   );
 };

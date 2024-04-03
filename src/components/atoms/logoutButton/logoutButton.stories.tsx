@@ -15,7 +15,12 @@ const meta: Meta<typeof LogoutButton> = {
     (Story) => (
       <Provider store={storybookStore}>
         <ThemeManager>
-          <Layout height="inherit">
+          <Layout
+            sx={{
+              p: "20px",
+              height: "inherit",
+            }}
+          >
             <ToggleTheme center />
             <Story />
           </Layout>

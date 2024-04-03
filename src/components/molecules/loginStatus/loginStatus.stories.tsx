@@ -16,7 +16,12 @@ const meta: Meta<typeof LoginStatus> = {
     (Story) => (
       <Provider store={storybookStore}>
         <ThemeManager>
-          <Layout height="inherit">
+          <Layout
+            sx={{
+              p: "20px",
+              height: "inherit",
+            }}
+          >
             <Box sx={{ color: (theme: Theme) => theme.palette.text.primary }}>
               <ToggleTheme
                 center

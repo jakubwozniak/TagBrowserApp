@@ -16,7 +16,12 @@ const meta: Meta<typeof TagBrowser> = {
     (Story) => (
       <Provider store={storybookStore}>
         <ThemeManager>
-          <Layout height="inherit">
+          <Layout
+            sx={{
+              p: "20px",
+              height: "inherit",
+            }}
+          >
             <ToggleTheme center />
             <Box sx={{ backgroundColor: "#2B3647" }}>
               <Story />

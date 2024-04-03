@@ -14,7 +14,12 @@ const meta: Meta<typeof LoaderComponent> = {
   decorators: [
     (Story) => (
       <ThemeManager>
-        <Layout height="inherit">
+        <Layout
+          sx={{
+            p: "20px",
+            height: "inherit",
+          }}
+        >
           <ToggleTheme center />
           <Story />
         </Layout>

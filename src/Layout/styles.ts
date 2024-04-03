@@ -6,14 +6,10 @@ export const containerStyles = {
       ? theme.palette.primary.dark
       : theme.palette.primary.main,
   display: "flex",
-  flexDirection: {
-    xs: "column",
-    lg: "row",
-  },
+  flexDirection: "column",
   color: "white",
-  padding: { xs: "24px", lg: "24px 0 24px 24px" },
   gap: 3,
   overflowY: "hidden",
   height: "100dvh",
   boxSizing: "border-box",
-};
+} as any;

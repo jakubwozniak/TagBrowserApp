@@ -15,7 +15,12 @@ const meta: Meta<typeof NavList> = {
     withRouter,
     (Story) => (
       <ThemeManager>
-        <Layout height="inherit">
+        <Layout
+          sx={{
+            p: "20px",
+            height: "inherit",
+          }}
+        >
           <ToggleTheme center />
           <Box sx={{ backgroundColor: "#2B3647" }}>
             <Story />

@@ -29,7 +29,7 @@ const NavList = () => {
   };
   console.log(theme);
   return (
-    <List component="nav" aria-label="main" sx={containerStyles}>
+    <List component="ul" aria-label="main" sx={containerStyles}>
       {navItems.map((item: NavItemInterface) => (
         <ListItemButton
           selected={selectedIndex === item.id}
