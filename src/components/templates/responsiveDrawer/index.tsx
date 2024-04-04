@@ -8,6 +8,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Sidebar from "../../organisms/sidebar";
+import { useTheme } from "@mui/material";
 
 const drawerWidth = 240;
 
@@ -16,6 +17,7 @@ interface DrawerProps {
 }
 
 const ResponsiveDrawer = ({ children }: DrawerProps) => {
+  const theme = useTheme();
   const [mobileOpen, setMobileOpen] = useState(false);
   const [isClosing, setIsClosing] = useState(false);
 
@@ -62,7 +64,7 @@ const ResponsiveDrawer = ({ children }: DrawerProps) => {
           ml: { md: `${drawerWidth}px` },
         }}
       >
-        <Toolbar>
+        <Toolbar sx={{ backgroundColor: theme.palette.primary.main }}>
           <IconButton
             color="inherit"
             aria-label="open drawer"
@@ -72,6 +74,7 @@ const ResponsiveDrawer = ({ children }: DrawerProps) => {
           >
             <MenuIcon />
           </IconButton>
+          asd
         </Toolbar>
       </AppBar>
       <Box
