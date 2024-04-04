@@ -3,9 +3,14 @@ import { useDispatch } from "react-redux";
 import { AppDispatch } from "../../../state/store";
 import { setAccessToken } from "../../../state/userData/userDataSlice";
 
-const CustomOAuth2 = () => {
+interface CustomOAuth2Props {
+  onSuccess?: () => void;
+}
+
+const CustomOAuth2 = (props: CustomOAuth2Props) => {
   const onSuccess = (response: any) => {
     dispatch(setAccessToken(response.access_token));
+    if (props.onSuccess) props.onSuccess();
   };
   const onFailure = (response: any) => console.error(response);
   const dispatch = useDispatch<AppDispatch>();

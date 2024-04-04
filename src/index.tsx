@@ -5,6 +5,7 @@ import reportWebVitals from "./reportWebVitals";
 import { Provider } from "react-redux";
 import { store } from "./state/store";
 import App from "./App";
+import ErrorBoundary from "./utils/ErrorBoundary";
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
@@ -12,7 +13,9 @@ const root = ReactDOM.createRoot(
 root.render(
   <Provider store={store}>
     <ThemeManager>
-      <App />
+      <ErrorBoundary fallback="Something went wrong.">
+        <App />
+      </ErrorBoundary>
     </ThemeManager>
   </Provider>
 );

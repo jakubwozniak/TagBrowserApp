@@ -1,16 +1,16 @@
 import { Box, SelectChangeEvent, useTheme } from "@mui/material";
 import TagList from "../../organisms/tagList";
 import { containerStyles } from "./styles";
-import { ReactNode, useEffect, useRef, useState } from "react";
+import { ReactNode, Suspense, useEffect, useRef, useState } from "react";
 import { debounce } from "lodash";
 import { useSelector } from "react-redux";
 import { useGetAllTagsQuery } from "../../../state/tags/apiSlice";
 import { RootState } from "../../../state/store";
 import LoaderComponent from "../../atoms/loaderComponent";
 import TagLoadingErrorComponent from "../../organisms/tagLoadingErrorComponent";
+import { ErrorBoundary } from "react-error-boundary";
 
 const TagBrowser = () => {
-  const theme = useTheme();
   const [currentItemsOnPagesInput, setCurrentItemsOnPageInput] =
     useState<number>(5);
   const [currentItemsOnPage, setCurrentItemsOnPage] = useState<number>(5);
@@ -77,45 +77,42 @@ const TagBrowser = () => {
   });
 
   useEffect(() => {
-    console.log("tagApiAccessToken " + userData);
-  }, [userData]);
-  useEffect(() => {
-    if (!isLoading && !error && data) {
-      console.log("New Tags:", data);
-    }
     return () => {
       debouncedSetCurrentPage.cancel();
       debouncedSetCurrentItemsOnPage.cancel();
     };
-  }, [
-    data,
-    error,
-    isLoading,
-    debouncedSetCurrentPage,
-    debouncedSetCurrentItemsOnPage,
-  ]);
+  }, [debouncedSetCurrentPage, debouncedSetCurrentItemsOnPage]);
 
-  if (isLoading) return <LoaderComponent />;
-
-  if (error) {
+  /*if (error) {
     return <TagLoadingErrorComponent error={error} />;
-  }
+  }*/
 
   return (
     <Box sx={containerStyles}>
-      <TagList
-        data={data}
-        currentItemsOnPagesInput={currentItemsOnPagesInput}
-        currentItemsOnPage={currentItemsOnPage}
-        currentPageInput={currentPageInput}
-        currentPage={currentPage}
-        sortField={sortField}
-        sortDirection={sortDirection}
-        handleSortFieldChange={handleSortFieldChange}
-        handleSortDirectionChange={handleSortDirectionChange}
-        handleItemsPerPageChange={handleItemsPerPageChange}
-        handleCurrentPageInputChange={handleCurrentPageInputChange}
-      />
+      <ErrorBoundary
+        fallbackRender={TagLoadingErrorComponent}
+        onReset={(details) => {
+          setCurrentPageInput(1);
+          setCurrentPage(1);
+        }}
+      >
+        <Suspense fallback={<LoaderComponent />}>
+          <TagList
+            data={data}
+            error={error}
+            currentItemsOnPagesInput={currentItemsOnPagesInput}
+            currentItemsOnPage={currentItemsOnPage}
+            currentPageInput={currentPageInput}
+            currentPage={currentPage}
+            sortField={sortField}
+            sortDirection={sortDirection}
+            handleSortFieldChange={handleSortFieldChange}
+            handleSortDirectionChange={handleSortDirectionChange}
+            handleItemsPerPageChange={handleItemsPerPageChange}
+            handleCurrentPageInputChange={handleCurrentPageInputChange}
+          />
+        </Suspense>
+      </ErrorBoundary>
     </Box>
   );
 };

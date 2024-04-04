@@ -7,4 +7,5 @@ export const containerStyles = {
     theme.palette.mode === "dark"
       ? theme.palette.primary.main
       : theme.palette.primary.light,
+  p: "16px",
 };

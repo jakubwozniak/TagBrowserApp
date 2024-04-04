@@ -2,7 +2,6 @@ import { Theme } from "@mui/material";
 
 export const listContainerStyles = {
   width: "100%",
-  p: "14px 16px",
   boxSizing: "border-box",
 };
 

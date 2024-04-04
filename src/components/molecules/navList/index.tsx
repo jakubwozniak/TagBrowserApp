@@ -27,7 +27,6 @@ const NavList = () => {
   const handleListItemClick = (item: NavItemInterface) => {
     navigate(item.link);
   };
-  console.log(theme);
   return (
     <List component="ul" aria-label="main" sx={containerStyles}>
       {navItems.map((item: NavItemInterface) => (

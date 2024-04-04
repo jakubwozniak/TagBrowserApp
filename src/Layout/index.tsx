@@ -20,7 +20,14 @@ const Layout = ({ children, displaySidebar, sx }: LayoutProps) => {
     >
       {displaySidebar === true ? (
         <ResponsiveDrawer>
-          <Box sx={{ width: "100%", overflowY: "auto", pr: { lg: "24px" } }}>
+          <Box
+            sx={{
+              width: "100%",
+              overflowY: "auto",
+              pr: { lg: "24px" },
+              height: "100%",
+            }}
+          >
             {children}
           </Box>
         </ResponsiveDrawer>

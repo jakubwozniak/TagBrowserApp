@@ -74,7 +74,6 @@ const ResponsiveDrawer = ({ children }: DrawerProps) => {
           >
             <MenuIcon />
           </IconButton>
-          asd
         </Toolbar>
       </AppBar>
       <Box

@@ -13,7 +13,7 @@ const PaginationComponent = ({
   totalPages,
 }: PaginationComponentProps) => {
   return (
-    <Box sx={{ p: "16px", display: "flex", justifyContent: "center" }}>
+    <Box sx={{ display: "flex", justifyContent: "center" }}>
       <Pagination
         count={totalPages}
         page={currentPageInput}

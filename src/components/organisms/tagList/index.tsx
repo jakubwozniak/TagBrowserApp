@@ -5,7 +5,8 @@ import CustomNumberInput from "../../atoms/customNumberInput";
 import CustomDropdown from "../../atoms/customDropdown";
 import TagItem from "../../atoms/tagItem";
 import PaginationComponent from "../../molecules/paginationComponent";
-
+import { FetchBaseQueryError } from "@reduxjs/toolkit/query";
+import { SerializedError } from "@reduxjs/toolkit";
 const sortFields = [
   { name: "", value: 0 },
   { name: "popular", value: 1 },
@@ -26,6 +27,7 @@ interface TagDataProps {
 
 interface TagListProps {
   data: TagDataProps;
+  error: FetchBaseQueryError | SerializedError | undefined;
   currentItemsOnPagesInput: number;
   currentItemsOnPage: number;
   currentPageInput: number | undefined;
@@ -46,6 +48,7 @@ interface TagListProps {
 
 const TagList = ({
   data,
+  error,
   currentItemsOnPagesInput,
   currentItemsOnPage,
   currentPageInput,
@@ -57,11 +60,14 @@ const TagList = ({
   handleItemsPerPageChange,
   handleCurrentPageInputChange,
 }: TagListProps) => {
+  if (!data) throw Promise.resolve("Loading");
+
+  if (error) throw new Error("", { cause: error });
+
   return (
     <Box sx={{ width: "100%" }}>
       <Box
         sx={{
-          p: "16px",
           display: "flex",
           alignItems: "baseline",
           gap: "8px",
@@ -98,7 +104,13 @@ const TagList = ({
       </Box>
       {data && (
         <>
-          <SimpleList direction="row" items={data.items} renderItem={TagItem} />
+          <Box sx={{ p: "16px 0" }}>
+            <SimpleList
+              direction="row"
+              items={data.items}
+              renderItem={TagItem}
+            />
+          </Box>
           <PaginationComponent
             currentPageInput={currentPageInput}
             handlePageChange={handleCurrentPageInputChange}

@@ -44,11 +44,11 @@ const error = {
 };
 
 export const Default: Story = {
-  args: { error: error },
+  args: { error: new Error("Default error", { cause: error }) },
 };
 
 export const LoginOnPageTest: Story = {
-  args: { error: error },
+  args: { error: new Error("Login test error", { cause: error }) },
 };
 
 LoginOnPageTest.play = async ({ canvasElement }) => {

@@ -10,7 +10,7 @@ interface LoginStatusProps {
 }
 const LoginStatus = ({ sx }: LoginStatusProps) => {
   const userData = useSelector((state: RootState) => state.userData);
-  console.log(userData.tagApiAccessToken);
+
   return (
     <Box sx={containerStyles}>
       {userData.tagApiAccessToken ? (
