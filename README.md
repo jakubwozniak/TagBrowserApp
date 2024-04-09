@@ -40,6 +40,16 @@ ListItemsTest.play = async ({ canvasElement }) => {
 
 These tests ensure the reliability and stability of the codebase, covering both individual components and integration scenarios.
 
+## Preview
+
+### Desktop View
+<img width="1280" alt="taglistDesktop" src="https://github.com/jakubwozniak/TagBrowserApp/assets/8446297/6cc9f4dc-4689-4cb6-954f-68c04905726d">
+
+### Mobile View
+<img width="346" alt="mobile" src="https://github.com/jakubwozniak/TagBrowserApp/assets/8446297/1050f280-cdda-4498-9172-fc773a49a63b">
+<img width="344" alt="mobileMenu" src="https://github.com/jakubwozniak/TagBrowserApp/assets/8446297/9ccddf75-42b8-4b48-82fb-73218ea7f64f">
+
+
 ## Getting Started
 
 To get started with the TagBrowserApp, follow these steps:
